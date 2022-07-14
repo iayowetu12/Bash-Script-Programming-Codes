@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo "Enter Password:"
+read pwd
+
+# Counting the number of characters
+char=$(echo -n "$pwd" | wc -c)
+
+# Counting special characters
+special=$(expr length "${pwd//[^\~!@#$&*()]/}")
+
+# Setting  certain numbers constant
+min=7;
+zero=0;
+
+if [ "$char" -gt "$min" ]; then
+  echo "$pwd" | grep -q [0-9];
+  if  test $? -eq $zero; then
+	echo "$pwd" | grep -q [a-z] && echo "$pwd" | grep -q [A-Z];
+	if test $? -eq $zero; then
+	  echo "Strong  password  must";
+	else
+	  echo "<Weak Password - Upper and lower cases required>";
+   	fi;
+  else
+	echo "<Weak Password - No digit!>";
+  fi;
+else
+  echo "<Weak Password - Enter a least 8 characters>";
+fi;

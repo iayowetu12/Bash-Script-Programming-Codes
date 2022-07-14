@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Enter your password:"
+read pwd;
+#echo $pwd | wc -c >pwd.txt
+#pwd=`cat pwd.txt | wc -c`
+numpwd=$pwd-1
+neg=$numpwd<8
+if (($neg==0))
+then
+  echo "Character more than 7"
+else
+  echo "Characters less than 8"
+fi

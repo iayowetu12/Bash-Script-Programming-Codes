@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+#list the files and save to file-lists.txt
+ls -d  *filename* > file-lists.txt
+file=create-list.txt
+if [ -f "$file" ]
+then
+rm -f  $create_file
+fi
+
+#assign file-lists.txt
+file=file-lists.txt
+
+if [ -f "$file" ]
+then
+    while read line
+    do
+	num_of_lines=`wc --lines < $line`
+	$line $num_of_lines  >> create-list.txt
+    done < $fileelse
+    echo "File $file Not Found."
+fi
+
+#cat create-list.txt
+sort -k 2n create-list.txt
